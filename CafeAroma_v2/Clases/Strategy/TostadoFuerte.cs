@@ -1,0 +1,1 @@
+namespace CafeAroma_v2.Clases.Strategy { public class TostadoFuerte : ITostadoStrategy { public string Tostar(string d) => d + " - Tostado Fuerte"; } }

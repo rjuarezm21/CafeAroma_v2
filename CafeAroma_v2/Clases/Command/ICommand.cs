@@ -1,0 +1,1 @@
+namespace CafeAroma_v2.Clases.Command { public interface ICommand { void Ejecutar(); void Deshacer(); } }

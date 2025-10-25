@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>CafeAroma_v2</RootNamespace>
+    <AssemblyName>CafeAroma_v2</AssemblyName>
+    <StartupObject>CafeAroma_v2.Program</StartupObject>
+
+
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Clases\Adapter\AdapterFactura.cs" />
+    <Compile Remove="Clases\Adapter\IProveedorExterno.cs" />
+    <Compile Remove="Clases\Command\Invoker.cs" />
+    <Compile Remove="Clases\Composite\ProcesoCompuesto.cs" />
+    <Compile Remove="Clases\Composite\ProcesoSimple.cs" />
+    <Compile Remove="Clases\Observer\ObservadorReportes.cs" />
+    <Compile Remove="Clases\Observer\ResponsableDeCompras.cs" />
+    <Compile Remove="Clases\Strategy\DistribucionEconomica.cs" />
+    <Compile Remove="Clases\Strategy\DistribucionRapida.cs" />
+    <Compile Remove="Clases\Strategy\ITostadoStrategy.cs" />
+    <Compile Remove="Clases\Strategy\TostadoFuerte.cs" />
+    <Compile Remove="Clases\Strategy\TostadoSuave.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="14.0.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+ 
+</Project>

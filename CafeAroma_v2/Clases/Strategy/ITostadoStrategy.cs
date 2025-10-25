@@ -1,0 +1,1 @@
+namespace CafeAroma_v2.Clases.Strategy { public interface ITostadoStrategy { string Tostar(string descripcion); } }
