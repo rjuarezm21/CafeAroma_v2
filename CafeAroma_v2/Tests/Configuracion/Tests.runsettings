@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <!-- Configuración general para las pruebas -->
+  <RunConfiguration>
+    <!-- Especifica la versión del framework de prueba -->
+    <TargetFrameworkVersion>Framework48</TargetFrameworkVersion>
+    
+    <!-- Configuración de timeout para las pruebas (en milisegundos) -->
+    <TestSessionTimeout>300000</TestSessionTimeout>
+    
+    <!-- Configuración de paralelismo -->
+    <MaxCpuCount>1</MaxCpuCount>
+    
+    <!-- Configuración de la plataforma -->
+    <TargetPlatform>x64</TargetPlatform>
+    
+    <!-- Configurar tratamiento de errores -->
+    <TreatTestAdapterErrorsAsWarnings>false</TreatTestAdapterErrorsAsWarnings>
+  </RunConfiguration>
+
+  <!-- Configuración del recolector de datos para MSTest -->
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <!-- Recolector de cobertura de código -->
+      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <Configuration>
+          <CodeCoverage>
+            <!-- Incluir ensamblados específicos para cobertura -->
+            <ModulePaths>
+              <Include>
+                <ModulePath>.*CafeAroma_v2\.exe$</ModulePath>
+              </Include>
+              <Exclude>
+                <ModulePath>.*Test.*</ModulePath>
+                <ModulePath>.*\.resources\.dll$</ModulePath>
+              </Exclude>
+            </ModulePaths>
+            
+            <!-- Configurar métodos y clases a excluir -->
+            <Functions>
+              <Exclude>
+                <Function>.*\.get_.*</Function>
+                <Function>.*\.set_.*</Function>
+              </Exclude>
+            </Functions>
+            
+            <!-- Configurar atributos que excluyen de cobertura -->
+            <Attributes>
+              <Exclude>
+                <Attribute>^System\.Diagnostics\.DebuggerHiddenAttribute$</Attribute>
+                <Attribute>^System\.Diagnostics\.DebuggerNonUserCodeAttribute$</Attribute>
+                <Attribute>^System\.CodeDom\.Compiler\.GeneratedCodeAttribute$</Attribute>
+                <Attribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</Attribute>
+              </Exclude>
+            </Attributes>
+            
+            <!-- Configurar fuentes a excluir -->
+            <Sources>
+              <Exclude>
+                <Source>.*\\obj\\.*</Source>
+                <Source>.*\\bin\\.*</Source>
+                <Source>.*Designer\.cs$</Source>
+                <Source>.*\.resx$</Source>
+              </Exclude>
+            </Sources>
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+      
+      <!-- Recolector de video (opcional, para pruebas de UI) -->
+      <DataCollector friendlyName="Screen and Voice Recorder" uri="datacollector://microsoft/ScreenAndVoiceRecorder/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.DataCollection.ScreenAndVoiceRecorder.ScreenAndVoiceRecorderDataCollector, Microsoft.VisualStudio.TestTools.DataCollection.ScreenAndVoiceRecorder" enabled="false">
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+
+  <!-- Configuración específica de MSTest -->
+  <MSTest>
+    <!-- Configurar comportamiento de timeout por prueba -->
+    <Timeout>60000</Timeout>
+    
+    <!-- Configurar para ignorar pruebas marcadas como Ignore -->
+    <IgnoreTestImpact>false</IgnoreTestImpact>
+    
+    <!-- Configurar orden de ejecución de pruebas -->
+    <ExecutionOrder>Random</ExecutionOrder>
+    
+    <!-- Configurar para forzar la ejecución en orden -->
+    <ForceListContent>false</ForceListContent>
+    
+    <!-- Configurar paralelismo a nivel de clase -->
+    <Parallelization>
+      <Workers>4</Workers>
+      <Scope>ClassLevel</Scope>
+    </Parallelization>
+    
+    <!-- Configurar mapeo de marco de trabajo de prueba -->
+    <MapInconclusiveToFailed>false</MapInconclusiveToFailed>
+    
+    <!-- Configurar captura de salida de consola -->
+    <CaptureTraceOutput>true</CaptureTraceOutput>
+    
+    <!-- Configurar para continuar después de falla -->
+    <ContinueAfterFailure>true</ContinueAfterFailure>
+    
+    <!-- Configurar para deployment de archivos -->
+    <DeploymentEnabled>false</DeploymentEnabled>
+  </MSTest>
+
+  <!-- Configuración de logging -->
+  <LoggerRunSettings>
+    <Loggers>
+      <!-- Logger de consola con configuración detallada -->
+      <Logger friendlyName="Console" enabled="true">
+        <Configuration>
+          <Verbosity>detailed</Verbosity>
+        </Configuration>
+      </Logger>
+      
+      <!-- Logger TRX para generar reportes XML -->
+      <Logger friendlyName="trx" enabled="true">
+        <Configuration>
+          <LogFileName>TestResults.trx</LogFileName>
+        </Configuration>
+      </Logger>
+      
+      <!-- Logger HTML (requiere extensión adicional) -->
+      <Logger friendlyName="html" enabled="false">
+        <Configuration>
+          <LogFileName>TestResults.html</LogFileName>
+        </Configuration>
+      </Logger>
+    </Loggers>
+  </LoggerRunSettings>
+
+  <!-- Configuración de parametros de prueba -->
+  <TestRunParameters>
+    <Parameter name="TestEnvironment" value="Development" />
+    <Parameter name="DatabaseConnectionString" value="Data Source=localhost;Initial Catalog=CafeAromatestDB;Integrated Security=True" />
+    <Parameter name="TestDataPath" value="TestData\" />
+    <Parameter name="EnableLogging" value="true" />
+    <Parameter name="LogLevel" value="Debug" />
+  </TestRunParameters>
+</RunSettings>
